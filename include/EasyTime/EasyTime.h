@@ -23,7 +23,7 @@
 #include <chrono>
 #include <set>
 #include <vector>
-#include <macro_glog/macro_glog.h>
+// #include <macro_glog/macro_glog.h>
 
 namespace ns_easytime {
 
@@ -212,7 +212,7 @@ void Periodicity<T>::getSplitSeg(const Periodicity<T>& vi_pd,
   //  Periodicity<T> result;
   vo_result.__length = lcm(vi_pd.__length, __length);
 
-  MACRO_GLOG_INFO("vo_result.__length:" << vo_result.__length);
+  // MACRO_GLOG_INFO("vo_result.__length:" << vo_result.__length);
 
   /// 拓展this
   Periodicity<T> thisextend;
@@ -231,17 +231,17 @@ void Periodicity<T>::getSplitSeg(const Periodicity<T>& vi_pd,
     }
   }
 
-  MACRO_GLOG_INFO(
-      "thisextend.__list_segment.size:" << thisextend.__list_segment.size());
-  {
-    std::string printstring;
-    for (int var = 0; var < thisextend.__list_segment.size(); ++var) {
-      printstring +=
-          "(" + std::to_string(thisextend.__list_segment[var].__start) + "," +
-          std::to_string(thisextend.__list_segment[var].__duration) + ")";
-    }
-    MACRO_GLOG_INFO("__list_segment:" << printstring);
-  }
+  // MACRO_GLOG_INFO(
+  //     "thisextend.__list_segment.size:" << thisextend.__list_segment.size());
+  // {
+  //   std::string printstring;
+  //   for (int var = 0; var < thisextend.__list_segment.size(); ++var) {
+  //     printstring +=
+  //         "(" + std::to_string(thisextend.__list_segment[var].__start) + "," +
+  //         std::to_string(thisextend.__list_segment[var].__duration) + ")";
+  //   }
+  //   MACRO_GLOG_INFO("__list_segment:" << printstring);
+  // }
 
   /// 拓展vi_pd
   Periodicity<T> vi_pdextend;
@@ -259,8 +259,8 @@ void Periodicity<T>::getSplitSeg(const Periodicity<T>& vi_pd,
       }
     }
   }
-  MACRO_GLOG_INFO(
-      "vi_pdextend.__list_segment.size:" << vi_pdextend.__list_segment.size());
+  // MACRO_GLOG_INFO(
+  //     "vi_pdextend.__list_segment.size:" << vi_pdextend.__list_segment.size());
 
   /// 找出周期的时间点
   /// 每各周期进行将时段进行分割,使两个周期具有相同的分割
@@ -284,14 +284,14 @@ void Periodicity<T>::getSplitSeg(const Periodicity<T>& vi_pd,
 
   /// 转换成vector
   std::vector<long long> list_point(set_point.begin(), set_point.end());
-  MACRO_GLOG_INFO("list_point.size:" << list_point.size());
-  {
-    std::string printstring;
-    for (int var = 0; var < list_point.size(); ++var) {
-      printstring += std::to_string(list_point[var]) + ",";
-    }
-    MACRO_GLOG_INFO("list_point:" << printstring);
-  }
+  // MACRO_GLOG_INFO("list_point.size:" << list_point.size());
+  // {
+  //   std::string printstring;
+  //   for (int var = 0; var < list_point.size(); ++var) {
+  //     printstring += std::to_string(list_point[var]) + ",";
+  //   }
+  //   MACRO_GLOG_INFO("list_point:" << printstring);
+  // }
 
   /// if thisextend.__list_segment 中的一项包含
   /// list_point中的数字,且不是边界,则进行分割
@@ -338,14 +338,14 @@ void Periodicity<T>::getSplitSeg(const Periodicity<T>& vi_pd,
     }
   }
 
-  {
-    std::string printstring;
-    for (int var = 0; var < vo_list_this.size(); ++var) {
-      printstring += "(" + std::to_string(vo_list_this[var].__start) + "," +
-                     std::to_string(vo_list_this[var].__duration) + ")";
-    }
-    MACRO_GLOG_INFO("vo_list_this:" << printstring);
-  }
+  // {
+  //   std::string printstring;
+  //   for (int var = 0; var < vo_list_this.size(); ++var) {
+  //     printstring += "(" + std::to_string(vo_list_this[var].__start) + "," +
+  //                    std::to_string(vo_list_this[var].__duration) + ")";
+  //   }
+  //   MACRO_GLOG_INFO("vo_list_this:" << printstring);
+  // }
 
   std::vector<std::vector<long long>> list_split_vi_pd_lseg(
       vi_pdextend.__list_segment.size());
@@ -380,13 +380,13 @@ void Periodicity<T>::getSplitSeg(const Periodicity<T>& vi_pd,
   /// 得到区间细分后的列表
   for (int var = 0; var < vi_pdextend.__list_segment.size(); ++var) {
     if (list_split_vi_pd_lseg[var].size() > 0) {
-      MACRO_GLOG_INFO(var << " list_split_vi_pd_lseg[var].size:"
-                          << list_split_vi_pd_lseg[var].size());
+      // MACRO_GLOG_INFO(var << " list_split_vi_pd_lseg[var].size:"
+      //                     << list_split_vi_pd_lseg[var].size());
       /// 将Segment以某些数值,划分成若干段
       std::vector<Segment<T>> list_tmp =
           vi_pdextend.__list_segment[var].split(list_split_vi_pd_lseg[var]);
 
-      MACRO_GLOG_INFO(var << " list_tmp.size:" << list_tmp.size());
+      // MACRO_GLOG_INFO(var << " list_tmp.size:" << list_tmp.size());
 
       vo_list_pd.insert(vo_list_pd.end(), list_tmp.begin(), list_tmp.end());
 
