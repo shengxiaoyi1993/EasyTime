@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.10)
 #识别当前文件名，将当前文件夹名设置为项目名称
 string(REGEX REPLACE ".*/\(.*\)" "\\1" CURDIR_NAME ${CMAKE_CURRENT_SOURCE_DIR})
 
-project(${CURDIR_NAME} VERSION 0.1)
+project(EasyTime VERSION 0.1)
 
 # 编译选项
 set(CMAKE_CXX_STANDARD 11)
