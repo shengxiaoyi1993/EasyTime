@@ -27,7 +27,7 @@ else()
   set(MAIN_BINARY_DIR ${CMAKE_BINARY_DIR})
 endif()
 
-
+set(CMAKE_GENERATOR "Visual Studio 15 2017 Win64")
 
 # 将环境中设置的编译环境同步至cmake
 SET(PATH_COM_REPO $ENV{PATH_COM_REPO})
