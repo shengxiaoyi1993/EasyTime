@@ -1,24 +1,27 @@
 ﻿#ifndef EASYTIME_H
 #define EASYTIME_H
 
-#ifdef _WIN32
-#include <io.h>
-#include <process.h>
-#elif __linux__
-#include <unistd.h>
-#endif
+// #ifdef _WIN32
+// #include <io.h>
+// #include <process.h>
+// #elif __linux__
+// #include <unistd.h>
+// #endif
 
-#ifdef _MSC_VER_DISABLE
-#  if defined( BUILD_SHARED_LIBS_OFF )
-#    define DLLEXPORT
-#  elif defined( BUILD_SHARED_LIBS_ON )
-#    define DLLEXPORT   __declspec(dllexport)
-#  else
-#    define DLLEXPORT   __declspec(dllimport)
-#  endif
-#else
-#    define DLLEXPORT
-#endif
+// #ifdef _MSC_VER_DISABLE
+// #  if defined( BUILD_SHARED_LIBS_OFF )
+// #    define DLLEXPORT
+// #  elif defined( BUILD_SHARED_LIBS_ON )
+// #    define DLLEXPORT   __declspec(dllexport)
+// #  else
+// #    define DLLEXPORT   __declspec(dllimport)
+// #  endif
+// #else
+// #    define DLLEXPORT
+// #endif
+
+# define DLLEXPORT   __declspec(dllexport)
+
 
 /*
 * Copyright (c) 2022-06-01, DigitalVersion Inc. - All Rights Reserved
