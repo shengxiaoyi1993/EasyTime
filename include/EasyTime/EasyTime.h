@@ -80,7 +80,7 @@ inline long long getTimeCode() {
 
 /// 最小公倍数
 DLLEXPORT int lcm(int a, int b);
-template <typename T> DLLEXPORT
+template <typename T> 
 bool isEqual(const std::set<T>& set1, const std::set<T>& set2) {
   if (set1.size() != set2.size()) {
     return false;
@@ -97,7 +97,7 @@ bool isEqual(const std::set<T>& set1, const std::set<T>& set2) {
 /// 时段也可以没有状态
 /// 在求
 
-template <typename T> DLLEXPORT
+template <typename T> 
 class Segment {
  public:
   long long __start;
@@ -171,7 +171,7 @@ void Segment<T>::mergeSegmet(std::vector<Segment<T>>& vo_list,
   }
 }
 
-template <typename T> DLLEXPORT
+template <typename T> 
 class Periodicity {
 
  public:
