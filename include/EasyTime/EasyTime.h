@@ -1,6 +1,25 @@
 ﻿#ifndef EASYTIME_H
 #define EASYTIME_H
 
+#ifdef _WIN32
+#include <io.h>
+#include <process.h>
+#elif __linux__
+#include <unistd.h>
+#endif
+
+#ifdef _MSC_VER_DISABLE
+#  if defined( BUILD_SHARED_LIBS_OFF )
+#    define DLLEXPORT
+#  elif defined( BUILD_SHARED_LIBS_ON )
+#    define DLLEXPORT   __declspec(dllexport)
+#  else
+#    define DLLEXPORT   __declspec(dllimport)
+#  endif
+#else
+#    define DLLEXPORT
+#endif
+
 /*
 * Copyright (c) 2022-06-01, DigitalVersion Inc. - All Rights Reserved
 *
@@ -34,9 +53,9 @@ namespace ns_easytime {
  * - 距离基准时间的纳秒数
  * @return
  */
-std::string getTimePointString_ns(long long v_time);
+DLLEXPORT std::string getTimePointString_ns(long long v_time);
 
-std::string getTimePointString(long long v_time);
+DLLEXPORT std::string getTimePointString(long long v_time);
 
 /**
  * @brief getTimeDurationString_ns
@@ -45,7 +64,7 @@ std::string getTimePointString(long long v_time);
  */
 // std::string getTimeDurationString_ns(long long v_time);
 
-long long getTimeCode_ms();
+DLLEXPORT long long getTimeCode_ms();
 
 ///
 /// T can be std::chrono::milliseconds or others
@@ -57,8 +76,8 @@ inline long long getTimeCode() {
 }
 
 /// 最小公倍数
-int lcm(int a, int b);
-template <typename T>
+DLLEXPORT int lcm(int a, int b);
+template <typename T> DLLEXPORT
 bool isEqual(const std::set<T>& set1, const std::set<T>& set2) {
   if (set1.size() != set2.size()) {
     return false;
@@ -75,7 +94,7 @@ bool isEqual(const std::set<T>& set1, const std::set<T>& set2) {
 /// 时段也可以没有状态
 /// 在求
 
-template <typename T>
+template <typename T> DLLEXPORT
 class Segment {
  public:
   long long __start;
@@ -149,7 +168,7 @@ void Segment<T>::mergeSegmet(std::vector<Segment<T>>& vo_list,
   }
 }
 
-template <typename T>
+template <typename T> DLLEXPORT
 class Periodicity {
 
  public:
